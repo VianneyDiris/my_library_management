@@ -1,0 +1,15 @@
+version: '3.5'
+services:
+  library:
+    image: postgres:alpine
+    ports:
+    - '28000:5432'
+    container_name: library
+    environment:
+      POSTGRES_DB: db-library
+      POSTGRES_USER: adm-library
+      POSTGRES_PASSWORD: library
+    volumes:
+    - './sql:/docker-entrypoint-initdb.d'
+    restart: always
+    network_mode: bridge 
